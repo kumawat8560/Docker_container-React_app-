@@ -1,0 +1,55 @@
+'use strict';Object.defineProperty(exports, "__esModule", { value: true });var _jsxFileName = '/root/docker/frontend/src/CustomerDetails.js';var _react = require('react');var _react2 = _interopRequireDefault(_react);
+var _Panel = require('react-bootstrap/lib/Panel');var _Panel2 = _interopRequireDefault(_Panel);
+var _axios = require('axios');var _axios2 = _interopRequireDefault(_axios);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+//This Component is a child Component of Customers Component
+class CustomerDetails extends _react.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  //Function which is called when the component loads for the first time
+  componentDidMount() {
+    this.getCustomerDetails(this.props.val);
+  }
+
+  //Function which is called whenver the component is updated
+  componentDidUpdate(prevProps) {
+
+    //get Customer Details only if props has changed
+    if (this.props.val !== prevProps.val) {
+      this.getCustomerDetails(this.props.val);
+    }
+  }
+
+  //Function to Load the customerdetails data from json.
+  getCustomerDetails(id) {
+    _axios2.default.get('assets/samplejson/customer' + id + '.json').then(response => {
+      this.setState({ customerDetails: response });
+    });
+  }
+
+  render() {
+    if (!this.state.customerDetails)
+    return _react2.default.createElement('p', { __source: { fileName: _jsxFileName, lineNumber: 36 }, __self: this }, 'Loading Data');
+    return _react2.default.createElement('div', { className: 'customerdetails', __source: { fileName: _jsxFileName, lineNumber: 37 }, __self: this },
+      _react2.default.createElement(_Panel2.default, { bsStyle: 'info', className: 'centeralign', __source: { fileName: _jsxFileName, lineNumber: 38 }, __self: this },
+        _react2.default.createElement(_Panel2.default.Heading, { __source: { fileName: _jsxFileName, lineNumber: 39 }, __self: this },
+          _react2.default.createElement(_Panel2.default.Title, { componentClass: 'h3', __source: { fileName: _jsxFileName, lineNumber: 40 }, __self: this }, this.state.customerDetails.data.name)),
+
+        _react2.default.createElement(_Panel2.default.Body, { __source: { fileName: _jsxFileName, lineNumber: 42 }, __self: this },
+          _react2.default.createElement('p', { __source: { fileName: _jsxFileName, lineNumber: 43 }, __self: this }, 'Name : ', this.state.customerDetails.data.name),
+          _react2.default.createElement('p', { __source: { fileName: _jsxFileName, lineNumber: 44 }, __self: this }, 'Email : ', this.state.customerDetails.data.email),
+          _react2.default.createElement('p', { __source: { fileName: _jsxFileName, lineNumber: 45 }, __self: this }, 'Phone : ', this.state.customerDetails.data.phone),
+          _react2.default.createElement('p', { __source: { fileName: _jsxFileName, lineNumber: 46 }, __self: this }, 'City : ', this.state.customerDetails.data.city),
+          _react2.default.createElement('p', { __source: { fileName: _jsxFileName, lineNumber: 47 }, __self: this }, 'State : ', this.state.customerDetails.data.state),
+          _react2.default.createElement('p', { __source: { fileName: _jsxFileName, lineNumber: 48 }, __self: this }, 'Country : ', this.state.customerDetails.data.country),
+          _react2.default.createElement('p', { __source: { fileName: _jsxFileName, lineNumber: 49 }, __self: this }, 'Organization : ', this.state.customerDetails.data.organization),
+          _react2.default.createElement('p', { __source: { fileName: _jsxFileName, lineNumber: 50 }, __self: this }, 'Job Profile : ', this.state.customerDetails.data.jobProfile),
+          _react2.default.createElement('p', { __source: { fileName: _jsxFileName, lineNumber: 51 }, __self: this }, 'Additional Info : ', this.state.customerDetails.data.additionalInfo))));
+
+
+
+  }}exports.default = CustomerDetails;

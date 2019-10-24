@@ -1,0 +1,12 @@
+{
+	"id": 1,
+	"name": "Roshan Kumawat",
+	"email": "roshankumawat@gmail.com",
+	"phone": "123456789",
+	"city": "jaipur",
+	"state": "rajasthan",
+	"country": "India",
+	"organization": "Company 1",
+	"jobProfile": "Deveops Engineer",
+	"additionalInfo": "Currently looking for devops job"
+}
